@@ -1,0 +1,23 @@
+IF
+   Global("JL#TIGER","GLOBAL",0)
+   InParty(Myself)
+   AreaCheck("AR4500")
+THEN
+   RESPONSE #100
+      SetGlobalTimer("JL#TIGERTIMER","GLOBAL",10)
+      SetGlobal("JL#TIGER","GLOBAL",1)
+END
+
+IF
+   GlobalTimerExpired("JL#TIGERTIMER","GLOBAL")
+   Global("JL#TIGER","GLOBAL",1)
+   InParty(Myself)
+   AreaCheck("AR4500")
+   See(Player1)
+   !StateCheck(Player1,STATE_SLEEPING)
+   CombatCounter(0)
+THEN
+   RESPONSE #100
+      SetGlobal("JL#TIGER","GLOBAL",2)
+      StartDialogueNoSet(Player1)
+END

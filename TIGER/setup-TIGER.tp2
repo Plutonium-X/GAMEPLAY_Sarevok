@@ -1,0 +1,55 @@
+BACKUP ~TIGER/backup~
+AUTHOR ~jonalun@gmail.com~
+VERSION ~0.3~
+README ~TIGER/tiger-english.html~
+
+
+AUTO_TRA ~TIGER/languages/%s~
+
+LANGUAGE "English" "english"
+         ~TIGER/languages/english/setup.tra~
+
+LANGUAGE "Francais" "french"
+         ~TIGER/languages/french/setup.tra~
+		 
+LANGUAGE "Francais pour les editions EE" "frenchEE"
+         ~TIGER/languages/frenchEE/setup.tra~
+
+LANGUAGE "Russian" "russian"
+         ~TIGER/languages/russian/setup.tra~
+
+
+BEGIN @1
+
+
+//hit anim & projectile
+COPY ~TIGER/stuff/JL#THIT.bam~ ~override~
+COPY ~TIGER/stuff/JL#TIGER.bam~ ~override~
+ADD_PROJECTILE ~TIGER/stuff/JL#TIGER.pro~ 
+
+//icons
+COPY ~TIGER/stuff/JL#SARE1.bam~ ~override~
+COPY ~TIGER/stuff/JL#SARE2.bam~ ~override~
+
+//sounds
+COPY ~TIGER/stuff/JL#SARE0.wav~ ~override~
+COPY ~TIGER/stuff/JL#SARE1.wav~ ~override~
+COPY ~TIGER/stuff/JL#SARE2.wav~ ~override~
+COPY ~TIGER/stuff/JL#SARE3.wav~ ~override~
+
+//spells
+COPY ~TIGER/stuff/JL#SARE0.spl~ ~override~
+
+COPY ~TIGER/stuff/JL#SARE1.spl~ ~override~
+  SAY NAME1 @2
+  SAY 0xfe @3
+  WRITE_SHORT 0x98 ~%JL#TIGER%~
+
+COPY ~TIGER/stuff/JL#SARE2.spl~ ~override~
+  SAY NAME1 @4
+  SAY 0xfe @5
+
+//HOLY CRAP HE'S TALKING
+COMPILE ~TIGER/stuff/TIGER.d~
+
+EXTEND_TOP ~Sarev25.bcs~ ~TIGER/stuff/TIGER.baf~
